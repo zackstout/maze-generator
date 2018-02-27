@@ -4,12 +4,29 @@ var w = 800;
 var h = 800;
 var cellWid, cellHeight;
 var num = 30;
-var start = 0;
+var start = 100;
 // array of ids:
 var visitedCells = [];
+var cellTwo;
+var numCells = 0;
+
+var path = [];
+
+// Nuts, it passes arrays by reference......:
+var test = [1, 2];
+var test2 = test;
+test2.pop();
+console.log(test2, test);
+
+// Problem: you'd think you could just save the previous cell as the one to backtrack to, because it must have had open neighbors. Issue is that its last neighbor might have been the deadend. How do we get back to the previous cell with live neighbors?
+// Can we say that the prev cell has 2 possibilities? Because if only has one, it's heading for the dead end.
+
+// Maybe we pass the global grid array to the carvePassage function??
+
 
 function carvePassage(cell) {
-  console.log(cell);
+  cell2 = {};
+  // console.log(cell);
   var neighbors = getNeighbors(cell);
   // console.log(neighbors);
   var realNeighbors = [];
@@ -19,10 +36,39 @@ function carvePassage(cell) {
       realNeighbors.push(n);
     }
   });
-  // need to backtrack:
+
+  // Need to backtrack if no unvisited neighbors:
   if (realNeighbors.length == 0) {
     console.log('uh oh!');
+    console.log(path);
+    console.log(cell2);
+
+    if (visitedCells.length < 100) {
+      carvePassage(cell2);
+
+    } else {
+      return;
+    }
+
+    // while (path.length > 0) {
+    //   var prev = path.pop();
+    //   var neigh = getNeighbors(prev);
+    //   var neighReal = [];
+    //   neigh.forEach(function(x) {
+    //     if (!visitedCells.includes(x)) {
+    //       neighReal.push(x);
+    //     }
+    //   });
+    //   console.log(neighReal);
+    //   if (neighReal.length !== 0) {
+    //     carvePassage(neighReal);
+    //     // return;
+    //   }
+    // }
+
+  // There is an available (i.e. unvisited) adjacent cell:
   } else {
+
     // Get next cell:
     var rand = Math.floor(Math.random() * realNeighbors.length);
     var next = realNeighbors[rand];
@@ -31,6 +77,14 @@ function carvePassage(cell) {
       return c.id == next;
     });
     console.log(nextReal);
+
+    path.push(nextReal[0]);
+    numCells ++;
+
+    if (realNeighbors.length > 1) {
+      cell2 = nextReal[0];
+      // console.log(cell2);
+    }
 
     // console.log(cell.id, nextReal[0].id);
 
