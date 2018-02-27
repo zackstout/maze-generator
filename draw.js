@@ -5,12 +5,13 @@ var h = 800;
 var cellWid, cellHeight;
 var num = 30;
 var start = 0;
+// array of ids:
 var visitedCells = [];
 
 function carvePassage(cell) {
-  // console.log(cell);
+  console.log(cell);
   var neighbors = getNeighbors(cell);
-  console.log(neighbors);
+  // console.log(neighbors);
   var realNeighbors = [];
   // check whether the neighbors have been visited:
   neighbors.forEach(function(n) {
@@ -18,18 +19,39 @@ function carvePassage(cell) {
       realNeighbors.push(n);
     }
   });
-  var rand = Math.floor(Math.random() * realNeighbors.length);
-  var next = realNeighbors[rand];
-  console.log(next);
-  //
-  // var nextReal = cells.filter(function(c) {
-  //   return c.id == next;
-  // });
-  //
-  // console.log(nextReal);
-  //
-  // nextReal.visited = true;
-  // return next;
+  // need to backtrack:
+  if (realNeighbors.length == 0) {
+
+  } else {
+    // Get next cell:
+    var rand = Math.floor(Math.random() * realNeighbors.length);
+    var next = realNeighbors[rand];
+    visitedCells.push(next);
+    var nextReal = cells.filter(function(c) {
+      return c.id == next;
+    });
+    console.log(nextReal);
+
+    console.log(cell.id, nextReal[0].id);
+    // Remove barrier:
+    if (nextReal[0].id == cell.id + 1) {
+      stroke(41, 100, 200);
+      strokeWeight(3);
+      console.log('hi');
+      line(cell.x, cell.y + cellHeight, cell.x + cellWid, cell.y + cellHeight);
+    } else if (nextReal[0].id == cell.id - 1) {
+
+    } else if (nextReal[0].id == cell.id + num) {
+      stroke(41, 100, 200);
+      strokeWeight(3);
+      console.log('hey');
+      line(cell.x + cellWid, cell.y, cell.x + cellWid, cell.y + cellHeight);
+    } else if (nextReal[0].id == cell.id - num) {
+
+    }
+  }
+
+
 }
 
 function setup() {
