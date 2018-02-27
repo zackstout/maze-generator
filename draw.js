@@ -25,7 +25,7 @@ console.log(test2, test);
 
 
 function carvePassage(cell) {
-  cell2 = {};
+  cellTwo = {};
   // console.log(cell);
   var neighbors = getNeighbors(cell);
   // console.log(neighbors);
@@ -41,14 +41,9 @@ function carvePassage(cell) {
   if (realNeighbors.length == 0) {
     console.log('uh oh!');
     console.log(path);
-    console.log(cell2);
+    console.log(cellTwo);
 
-    if (visitedCells.length < 100) {
-      carvePassage(cell2);
 
-    } else {
-      return;
-    }
 
     // while (path.length > 0) {
     //   var prev = path.pop();
@@ -76,15 +71,27 @@ function carvePassage(cell) {
     var nextReal = cells.filter(function(c) {
       return c.id == next;
     });
-    console.log(nextReal);
+
+    var currentReal = cells.filter(function(c) {
+      return c.id == cell.id;
+    });
+    console.log(currentReal[0]);
 
     path.push(nextReal[0]);
     numCells ++;
 
+    // console.log(cell);
+
+
+    // This is very odd, why is cellTwo empty here?:
+    console.log(cell.id, realNeighbors, nextReal[0], cellTwo);
     if (realNeighbors.length > 1) {
-      cell2 = nextReal[0];
-      // console.log(cell2);
+      cellTwo = currentReal[0];
+      console.log(cellTwo);
+      // console.log(cellTwo);
     }
+    console.log(cell.id, realNeighbors, nextReal[0], cellTwo);
+
 
     // console.log(cell.id, nextReal[0].id);
 
