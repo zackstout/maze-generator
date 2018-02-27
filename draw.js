@@ -21,7 +21,7 @@ function carvePassage(cell) {
   });
   // need to backtrack:
   if (realNeighbors.length == 0) {
-
+    console.log('uh oh!');
   } else {
     // Get next cell:
     var rand = Math.floor(Math.random() * realNeighbors.length);
@@ -32,24 +32,25 @@ function carvePassage(cell) {
     });
     console.log(nextReal);
 
-    console.log(cell.id, nextReal[0].id);
+    // console.log(cell.id, nextReal[0].id);
+
     // Remove barrier:
+    stroke(41, 100, 200);
+    strokeWeight(3);
+
     if (nextReal[0].id == cell.id + 1) {
-      stroke(41, 100, 200);
-      strokeWeight(3);
-      console.log('hi');
       line(cell.x, cell.y + cellHeight, cell.x + cellWid, cell.y + cellHeight);
     } else if (nextReal[0].id == cell.id - 1) {
-
+      line(cell.x, cell.y, cell.x + cellWid, cell.y);
     } else if (nextReal[0].id == cell.id + num) {
-      stroke(41, 100, 200);
-      strokeWeight(3);
-      console.log('hey');
       line(cell.x + cellWid, cell.y, cell.x + cellWid, cell.y + cellHeight);
     } else if (nextReal[0].id == cell.id - num) {
-
+      line(cell.x, cell.y, cell.x, cell.y + cellHeight);
     }
-  }
+
+
+    carvePassage(nextReal[0]);
+  } // end ELSE statement
 
 
 }
@@ -58,7 +59,7 @@ function setup() {
   createCanvas(w, h);
   drawGrid();
   console.log(cells);
-  // ahhh, returns an array:
+  // **** ahhh, returns an array ****:
   var startCell = cells.filter(function(c) {
     return c.id == start;
   });
