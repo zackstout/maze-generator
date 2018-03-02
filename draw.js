@@ -19,7 +19,7 @@ var nextCell, currentCell;
 
 function carvePassage(cell) {
   // console.log(numCells);
-  if (numCells > 800) {
+  if (numCells > 898) {
     console.log(('all done!'));
     return;
   } else {
@@ -150,7 +150,7 @@ function getNeighbors(cell) {
     output.push(left);
   }
   // check if on right border:
-  if (cell.id <= w - cellWid) {
+  if (cell.id <= w + cellWid * 2) {
     right = cell.id + num;
     output.push(right);
   }
