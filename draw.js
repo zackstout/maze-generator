@@ -15,21 +15,11 @@ var deadEnd = false;
 
 var nextCell, currentCell;
 
-// Nuts, it passes arrays by reference......:
-// var test = [1, 2];
-// var test2 = test;
-// test2.pop();
-// console.log(test2, test);
-
-// Problem: you'd think you could just save the previous cell as the one to backtrack to, because it must have had open neighbors. Issue is that its last neighbor might have been the deadend. How do we get back to the previous cell with live neighbors?
-// Can we say that the prev cell has 2 possibilities? Because if only has one, it's heading for the dead end.
-
-// Maybe we pass the global grid array to the carvePassage function??
-
+// Ok, we can get up to 700 no problem....
 
 function carvePassage(cell) {
   // console.log(numCells);
-  if (numCells > 500) {
+  if (numCells > 800) {
     console.log(('all done!'));
     return;
   } else {
@@ -46,8 +36,8 @@ function carvePassage(cell) {
 
       // Need to backtrack if no unvisited neighbors:
       if (realNeighbors.length == 0) {
-        console.log('uh oh!');
-        console.log(path);
+        // console.log('uh oh!');
+        // console.log(path);
         deadEnd = true;
         // console.log(deadEnd);
         carvePassage(currentCell);
@@ -67,7 +57,7 @@ function carvePassage(cell) {
           return c.id == cell.id;
         });
         // last one of these logged is the one *before* the dead end:
-        console.log(currentReal[0]);
+        // console.log(currentReal[0]);
         currentCell = currentReal[0];
 
         // last element of failed path is the dead end cell itself:
