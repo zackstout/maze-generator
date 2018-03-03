@@ -3,8 +3,8 @@ var cells = [];
 var w = 800;
 var h = 800;
 var cellWid, cellHeight;
-var num = 30;
-var start = 100;
+var num = 20;
+var start = 0;
 // array of ids:
 var visitedCells = [];
 var cellTwo;
@@ -19,7 +19,7 @@ var nextCell, currentCell;
 
 function carvePassage(cell) {
   // console.log(numCells);
-  if (numCells > 898) {
+  if (numCells > Math.pow(num, 2) - 300) {
     console.log(('all done!'));
     return;
   } else {
@@ -117,17 +117,19 @@ function setup() {
   drawGrid();
   console.log(cells);
   // **** ahhh, returns an array ****:
+
+  // this chunk can be moved into draw, but won't stutter-step through:
   var startCell = cells.filter(function(c) {
     return c.id == start;
   });
-  // console.log(startCell);
   visitedCells.push(start);
   carvePassage(startCell[0]);
-
 }
 
 function draw() {
   // background(210);
+
+
   // console.log(width);
 }
 
