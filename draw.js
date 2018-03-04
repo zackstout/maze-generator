@@ -3,7 +3,7 @@ var cells = [];
 var w = 800;
 var h = 800;
 var cellWid, cellHeight;
-var num = 20;
+var num = 30;
 var start = 0;
 // array of ids:
 var visitedCells = [];
@@ -13,13 +13,15 @@ var numCells = 0;
 var path = [];
 var deadEnd = false;
 
+var cell;
+
 var nextCell, currentCell;
 
 // Ok, we can get up to 700 no problem....
 
-function carvePassage(cell) {
+function carvePassage() {
   // console.log(numCells);
-  if (numCells > Math.pow(num, 2) - 300) {
+  if (numCells > Math.pow(num, 2) - 2) {
     console.log(('all done!'));
     return;
   } else {
@@ -40,7 +42,8 @@ function carvePassage(cell) {
         // console.log(path);
         deadEnd = true;
         // console.log(deadEnd);
-        carvePassage(currentCell);
+        cell = currentCell;
+        setTimeout(carvePassage, 50);
 
       // There is an available (i.e. unvisited) adjacent cell:
       } else {
@@ -77,16 +80,20 @@ function carvePassage(cell) {
           line(cell.x, cell.y, cell.x, cell.y + cellHeight);
         }
         nextCell = nextReal[0];
-        carvePassage(nextReal[0]);
+        cell = nextCell;
+        setTimeout(carvePassage, 50);
       } // end ELSE statement
 
     // we hit a dead end:
     } else {
-      console.log('dead end ');
+      // console.log('dead end ');
+      // console.log(path);
       // get rid of dead end:
       path.pop();
       while (deadEnd) {
         var last = path.pop();
+        // console.log(last);
+
         // check last's neighbors:
         var neigh = getNeighbors(last);
         var realNeigh = [];
@@ -99,7 +106,8 @@ function carvePassage(cell) {
           // We are still dead, need to keep backtracking:
         } else {
           deadEnd = false;
-          carvePassage(last);
+          cell = last;
+          setTimeout(carvePassage, 50);
         }
       }
       // carvePassage(currentCell);
@@ -123,7 +131,8 @@ function setup() {
     return c.id == start;
   });
   visitedCells.push(start);
-  carvePassage(startCell[0]);
+  cell = startCell[0];
+  carvePassage();
 }
 
 function draw() {
