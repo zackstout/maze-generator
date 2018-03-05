@@ -5,8 +5,11 @@ Implementing a maze generator with a [recursive backtracking](http://weblog.jami
 - p5.js
 
 ## Animated Screenshot:
-<!-- ![screen shot 2018-03-01 at 8 50 52 pm](https://user-images.githubusercontent.com/29472568/36881183-630e7a7a-1d92-11e8-935f-4033d1e38d88.png) -->
 <!-- ![]() -->
-![hi](https://media.giphy.com/media/U7Jp5g645hJw9m0eWx/giphy.gif width=200)
+![hi](https://media.giphy.com/media/U7Jp5g645hJw9m0eWx/giphy.gif)
 
-<iframe src="https://giphy.com/embed/U7Jp5g645hJw9m0eWx" width="480" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/U7Jp5g645hJw9m0eWx">via GIPHY</a></p>
+## Screenshot:
+![screen shot 2018-03-01 at 8 50 52 pm](https://user-images.githubusercontent.com/29472568/36881183-630e7a7a-1d92-11e8-935f-4033d1e38d88.png)
+
+
+<!-- <iframe src="https://giphy.com/embed/U7Jp5g645hJw9m0eWx" width="480" height="300" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/U7Jp5g645hJw9m0eWx">via GIPHY</a></p> -->
