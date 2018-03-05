@@ -6,4 +6,5 @@ Implementing a maze generator with a [recursive backtracking](http://weblog.jami
 
 ## Animated Screenshot:
 <!-- ![screen shot 2018-03-01 at 8 50 52 pm](https://user-images.githubusercontent.com/29472568/36881183-630e7a7a-1d92-11e8-935f-4033d1e38d88.png) -->
-![](https://media.giphy.com/media/U7Jp5g645hJw9m0eWx/giphy.gif)
+<!-- ![]() -->
+![hi](https://media.giphy.com/media/U7Jp5g645hJw9m0eWx/giphy.gif)
