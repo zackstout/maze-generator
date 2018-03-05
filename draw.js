@@ -43,7 +43,11 @@ function carvePassage() {
         deadEnd = true;
         // console.log(deadEnd);
         cell = currentCell;
-        setTimeout(carvePassage, 50);
+        // noStroke();
+        // fill(20, 150, 50);
+        // rect(cell.x, cell.y, cellWid - 2, cellHeight - 2);
+
+        setTimeout(carvePassage, 10);
 
       // There is an available (i.e. unvisited) adjacent cell:
       } else {
@@ -68,6 +72,7 @@ function carvePassage() {
         numCells ++;
 
         // Remove barrier:
+        // stroke(120, 0, 0);
         stroke(41, 100, 200);
         strokeWeight(3);
         if (nextReal[0].id == cell.id + 1) {
@@ -81,7 +86,11 @@ function carvePassage() {
         }
         nextCell = nextReal[0];
         cell = nextCell;
-        setTimeout(carvePassage, 50);
+
+        // noStroke();
+        // fill(120, 100, 50);
+        // rect(cell.x, cell.y, cellWid - 2, cellHeight - 2);
+        setTimeout(carvePassage, 10);
       } // end ELSE statement
 
     // we hit a dead end:
@@ -107,7 +116,10 @@ function carvePassage() {
         } else {
           deadEnd = false;
           cell = last;
-          setTimeout(carvePassage, 50);
+          // noStroke();
+          // fill(220, 150, 50);
+          // rect(cell.x, cell.y, cellWid - 2, cellHeight - 2);
+          setTimeout(carvePassage, 10);
         }
       }
       // carvePassage(currentCell);
