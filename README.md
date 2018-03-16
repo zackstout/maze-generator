@@ -1,5 +1,5 @@
 # Maze Generation with Recursive Backtracking.
-Implementing a maze generator with a [recursive backtracking](http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking) algorithm.
+Implementing a maze generator with a [recursive backtracking](http://weblog.jamisbuck.org/2010/12/27/maze-generation-recursive-backtracking) algorithm. Here's a [live version](https://zackstout.github.io/maze-generator/).
 
 ## Built With:
 - p5.js
